@@ -1,0 +1,10 @@
+# parsers/s02-enrich:
+name: custom/rdp-forbidden-usernames
+description: "Detect RDP login attempts with forbidden usernames"
+filter: "evt.Meta.event_id in ['4625']"
+grok:
+  pattern: "Account Name:\\s+(?P<username>\\S+)"
+  apply_on: message
+statics:
+  - meta: username
+    expression: evt.Parsed.username
