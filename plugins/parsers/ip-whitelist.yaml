@@ -1,0 +1,10 @@
+name: crowdsecurity/whitelists
+description: "Whitelist events from my ip addresses"
+whitelist:
+  reason: "my ip ranges"
+  ip:
+    - "1.1.1.1"
+    - "9.9.9.9"
+  cidr:
+    - "10.0.0.0/16"
+    - "172.30.10.0/28"
