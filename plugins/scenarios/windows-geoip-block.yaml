@@ -1,0 +1,15 @@
+type: trigger
+name: custom/geoip-block-non-uk
+description: "Block traffic from non-UK IP addresses"
+filter: "evt.Enriched.IsoCode != '' && evt.Enriched.IsoCode != 'GB'"
+groupby: evt.Meta.source_ip
+reprocess: true
+labels:
+  confidence: 3
+  spoofable: 0
+  classification:
+    - network.geo-blocking
+  behavior: "windows:geo-blocking"
+  label: "Non-UK Traffic Block"
+  remediation: true
+  service: windows
