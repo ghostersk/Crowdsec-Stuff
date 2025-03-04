@@ -1,4 +1,3 @@
-# scanarios:
 type: trigger
 name: custom/forbidden-usernames
 description: "Block IPs attempting RDP logins with forbidden usernames"
@@ -13,23 +12,5 @@ labels:
     - attack.T1110
   behavior: "windows:bruteforce"
   label: "Windows Bruteforce Username"
-  remediation: true
-  service: windows
-
----
-
-type: trigger
-name: custom/geoip-block-non-uk
-description: "Block traffic from non-UK IP addresses"
-filter: "evt.Enriched.IsoCode != '' && evt.Enriched.IsoCode != 'GB'"
-groupby: evt.Meta.source_ip
-reprocess: true
-labels:
-  confidence: 3
-  spoofable: 0
-  classification:
-    - network.geo-blocking
-  behavior: "windows:geo-blocking"
-  label: "Non-UK Traffic Block"
   remediation: true
   service: windows
